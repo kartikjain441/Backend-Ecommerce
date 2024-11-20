@@ -1,10 +1,10 @@
 const Payment = require("../models/Payment");
 const Razorpay = require("razorpay");
 const razorpay = new Razorpay({
-  key_id: "rzp_test_iHGS91ZuD3OrFT",
-  key_secret: "aNl8BOMa9RHvVsQ5jN1dvQLx",
+  key_id: process.env.RAZORPAY_KEY_ID,
+  key_secret: process.env.RAZORPAY_KEY_SECRET,
 });
-
+// checkout
 const checkout = async (req, res) => {
   const { amount, cartItems, userShipping, userId } = req.body;
 
@@ -23,7 +23,7 @@ const checkout = async (req, res) => {
     payStatus: "created",
   });
 };
-
+// verify save to db
 const verify = async (req, res) => {
   const {
     orderId,
@@ -48,8 +48,10 @@ const verify = async (req, res) => {
   res.json({ message: "payment Successful..", success: true, orderConfirm });
 };
 
+// user specific order
 const userOrder = async (req, res) => {
-  let userId = req.id;
+  let userId = req.user._id.toString();
+
   let orders = await Payment.find({ userId: userId }).sort({ orderDate: -1 });
   res.json(orders);
 };
