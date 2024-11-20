@@ -10,7 +10,7 @@ const port = 3000;
 //     credentials: true,
 //   })
 // );
-app.use(cors({ origin: "*", credentials: false }));
+app.use(cors({ origin: "*", credentials: true }));
 app.use(express.json());
 require("dotenv").config();
 
