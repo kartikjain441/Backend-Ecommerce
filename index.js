@@ -19,12 +19,14 @@ const CartRouter = require("./routes/Cart");
 const AddressRouter = require("./routes/Address");
 const PaymentRouter = require("./routes/Payment");
 
-
 mongoose
-  .connect(process.env.DATABASE_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(
+    "mongodb+srv://kj476960:hzpIrcbgxRtBRNDz@cluster0.7qqca.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
   .then(() => console.log("mongodb connected"))
   .catch((err) => console.log(err));
 //user
