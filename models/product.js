@@ -4,7 +4,7 @@ const productSchema = mongoose.Schema({
   title: {
     type: String,
     required: true,
-    // Removes whitespace from the beginning and end of the string
+    
   },
   description: {
     type: String,
@@ -31,7 +31,7 @@ const productSchema = mongoose.Schema({
 
   createdAt: {
     type: Date,
-    default: Date.now, // Sets the default value to the current date and time
+    default: Date.now, 
   },
 });
 const Product = mongoose.model("product", productSchema);

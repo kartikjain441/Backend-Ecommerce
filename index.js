@@ -5,18 +5,20 @@ const cors = require("cors");
 const port = 3000;
 app.use(
   cors({
-    origin: "https://frontend-ecommerce-beta-two.vercel.app/", // Replace with your actual frontend URL
+    origin: "https://frontend-ecommerce-beta-two.vercel.app/",
     methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true, // If you use cookies or need authentication
+    credentials: true,
   })
 );
 app.use(express.json());
 require("dotenv").config();
+
 const UserRouter = require("./routes/user");
 const productRouter = require("./routes/product");
 const CartRouter = require("./routes/Cart");
 const AddressRouter = require("./routes/Address");
 const PaymentRouter = require("./routes/Payment");
+
 
 mongoose
   .connect(process.env.DATABASE_URL, {
