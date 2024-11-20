@@ -3,13 +3,14 @@ const mongoose = require("mongoose");
 const app = express();
 const cors = require("cors");
 const port = 3000;
-app.use(
-  cors({
-    origin: "https://frontend-ecommerce-beta-two.vercel.app/",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: "https://frontend-ecommerce-beta-two.vercel.app/",
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+//     credentials: true,
+//   })
+// );
+app.use(cors({ origin: "*", credentials: false }));
 app.use(express.json());
 require("dotenv").config();
 
