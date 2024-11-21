@@ -95,7 +95,7 @@ const verifyEmail = async (req, res) => {
     user.isVerified = true;
     await user.save();
 
-    return res.redirect("http://localhost:5173/login");
+    return res.redirect("https://frontend-ecommerce-beta-two.vercel.app/login");
   } catch (error) {
     res.status(400).json({ message: "Invalid or expired token" });
   }
@@ -113,7 +113,7 @@ const forgetPassword = async (req, res) => {
       expiresIn: "1h",
     });
 
-    const resetLink = `http://localhost:5173/reset-password/${resetToken}`;
+    const resetLink = `https://frontend-ecommerce-beta-two.vercel.app/reset-password/${resetToken}`;
 
     const transporter = nodemailer.createTransport({
       service: "gmail",
