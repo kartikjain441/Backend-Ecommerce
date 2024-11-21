@@ -27,7 +27,7 @@ const register = async (req, res) => {
     const verificationToken = jwt.sign(
       { id: user._id },
       process.env.JWT_SECRET,
-      { expiresIn: "1h" }
+      { expiresIn: "24h" }
     );
 
     const transporter = nodemailer.createTransport({
@@ -81,6 +81,7 @@ const verifyEmail = async (req, res) => {
   const { token } = req.params;
 
   try {
+    console.log(process.env.JWT_SECRET);
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const user = await User.findById(decoded.id);
 
@@ -110,7 +111,7 @@ const forgetPassword = async (req, res) => {
     }
 
     const resetToken = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "1h",
+      expiresIn: "24h",
     });
 
     const resetLink = `https://frontend-ecommerce-beta-two.vercel.app/reset-password/${resetToken}`;
